@@ -9,9 +9,9 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 		features = "src/test/resources/features", 
 		glue = "com/orangehrm/steps", 
-		dryRun = true, 
+		dryRun = false, 
 		monochrome = true, 
-		tags = {"@AddEmployee"},
+		tags = {"@temp"},
 		plugin = {"pretty", "html:target/cucumber-default-reports", "json:target/cucumber.json"}
 		)
 public class TestRunner {

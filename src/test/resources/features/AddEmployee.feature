@@ -1,5 +1,5 @@
 #Author: avanchristian-trials65.orangehrmlive.com
-@sprint @AddEmployee
+@sprint  @AddEmployee
 Feature: Add Employee
 
   Background: 

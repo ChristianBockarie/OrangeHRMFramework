@@ -1,9 +1,8 @@
 package com.orangehrm.steps;
 
-import java.util.ArrayList;
+import java.util.ArrayList;	
 import java.util.List;
 
-import org.apache.commons.math3.analysis.function.Constant;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 
@@ -53,22 +52,22 @@ public class AddEmployeeSteps extends CommonMethods {
 	}
 	//Scenario: Add Employee and create login details
 	@When("I provide employee details from {string}")
-	public void i_provide_employee_details_from(String string) {
+	public void i_provide_employee_details_from(String EmployeeDetails) throws Exception  {
 		xcel.openExcel(Constants.XL_FILEPATH, "EmployeeDetails");
 		int rows = xcel.getRowNum(), cols = xcel.getColNum(0);
 		
-		for (int i=0; i<rows; i++) {
+		for (int i=1; i<rows; i++) {
 			for (int j=0; j<cols; j++) {
 				String fName = xcel.getCellData(i, j);
-				String mName = xcel.getCellData(i, j+1);
-				String lName = xcel.getCellData(i, j+1);
-				String location = xcel.getCellData(i, j+1);
+				String mName = xcel.getCellData(i, ++j);
+				String lName = xcel.getCellData(i, ++j);
+				String location = xcel.getCellData(i, ++j);
 				
 				sendText(addEmp.firstName, fName);
 				sendText(addEmp.middleName, mName);
 				sendText(addEmp.lastName, lName);
 				click(addEmp.location);
-				sendText(addEmp.locationList, location);			
+				selectList(addEmp.locationList, location);
 			}
 			
 		}
@@ -76,6 +75,7 @@ public class AddEmployeeSteps extends CommonMethods {
 	}
 	@When("I click on create login details")
 	public void i_click_on_create_login_details() {
+		waitForElementBeClickable(addEmp.createLoginDetailsBtn, 20);
 		click(addEmp.createLoginDetailsBtn);
 	}
 	@When("I provide all mandatory fields {string}, {string}, {string}, {string}")
