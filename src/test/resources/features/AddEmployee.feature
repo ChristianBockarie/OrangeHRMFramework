@@ -9,7 +9,7 @@ Feature: Add Employee
 
   @smoke @addEmployee
   Scenario Outline: Adding Employee
-    When I provide Employee details "<fName>" and "<mName>" and "<lName>" and "<location>"
+    When I provide Employee details "<fName>", "<mName>", "<lName>", "<location>" 
 		And I click on save button
 		Then I see employee "<fName>", "<lName>" is displayed
 		
@@ -23,7 +23,7 @@ Feature: Add Employee
   Scenario Outline: Add Employee and Create Login Details
     When I provide employee details from "EmployeeDetails"
    	And I click on create login details
-    And I provide all mandatory fields "<userName>" and "<passWord>" and "<confirmPassword>" and "<adminRole>"
+    And I provide all mandatory fields "<userName>", "<passWord>", "<confirmPassword>", "<adminRole>" 
     And I click on save button
    	Then I see employee "<fName>", "<lName>" is displayed
     
