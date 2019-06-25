@@ -11,7 +11,7 @@ import cucumber.api.junit.Cucumber;
 		glue = "com/orangehrm/steps", 
 		dryRun = false, 
 		monochrome = true, 
-		tags = {"@temp"},
+		tags = {"@sprint3"},
 		plugin = {"pretty", "html:target/cucumber-default-reports", "json:target/cucumber.json"}
 		)
 public class TestRunner {

@@ -1,5 +1,5 @@
 #Author: avanchristian-trials65.orangehrmlive.com
-@sprint  @AddEmployee
+@sprint3  @AddEmployee
 Feature: Add Employee
 
   Background: 
@@ -25,11 +25,11 @@ Feature: Add Employee
    	And I click on create login details
     And I provide all mandatory fields "<userName>", "<passWord>", "<confirmPassword>", "<adminRole>" 
     And I click on save button
-   	Then I see employee "<fName>", "<lName>" is displayed
+   	#Then I see employee "<fName>", "<lName>" is displayed
     
     Examples: 
       | userName | passWord    | confirmPassword | adminRole    |
-      | Admin1   | Tester1234! | Tester1234!     | Global Admin |
+      | Admin1   | SyntaxTester1234! | SyntaxTester1234!     | Global Admin |
 
   @regression
   Scenario: Add Employee Labels Verification

@@ -34,6 +34,7 @@ public class AddEmployeePage extends BaseClass {
 	@FindBy(xpath = "//label[contains(text(),'Create Login Details')]")
 	public WebElement createLoginDetailsBtn;
 
+	//creating login deatails locators	
 	@FindBy(xpath = "//input[@id='username']")
 	public WebElement loginUsername;
 
@@ -45,6 +46,9 @@ public class AddEmployeePage extends BaseClass {
 
 	@FindBy(xpath = "//*[@id='adminRoleId_inputfileddiv']/div/input")
 	public WebElement adminRole;
+
+	@FindBy(xpath = "//div[@id='adminRoleId_inputfileddiv']//div[@class='select-wrapper initialized']//ul")
+	public WebElement adminList;
 
 	@FindBy(id = "systemUserSaveBtn")
 	public WebElement saveBtn;

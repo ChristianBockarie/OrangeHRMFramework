@@ -75,7 +75,7 @@ public class AddEmployeeSteps extends CommonMethods {
 	}
 	@When("I click on create login details")
 	public void i_click_on_create_login_details() {
-		waitForElementBeClickable(addEmp.createLoginDetailsBtn, 20);
+		//waitForElementBeClickable(addEmp.createLoginDetailsBtn, 20);
 		click(addEmp.createLoginDetailsBtn);
 	}
 	@When("I provide all mandatory fields {string}, {string}, {string}, {string}")
@@ -84,9 +84,9 @@ public class AddEmployeeSteps extends CommonMethods {
 		sendText(addEmp.loginUsername, userName);
 		sendText(addEmp.loginPassword, passWord);
 		sendText(addEmp.confirmPassword, confirmPassword);
-		selectList(addEmp.adminRole, adminRole);
+		click(addEmp.adminRole);
+		selectList(addEmp.adminList, adminRole);
 	}
-	
 
 	@When("I click on save button")
 	public void i_click_on_save_button() {
