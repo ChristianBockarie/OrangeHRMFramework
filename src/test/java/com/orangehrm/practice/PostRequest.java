@@ -49,7 +49,8 @@ public class PostRequest {
 		int studentId = resp.jsonPath().get("id");
 		System.out.println(studentId);
 				
-		Map<String, Object> responseMap = resp.as(Map.class);    
+		Map<String, Object> responseMap = resp.as(Map.class);  
+		
 		System.out.println(responseMap);
 		
 	}

@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import com.orangehrm.utils.BaseClass;
 
 public class JobTitlePage extends BaseClass {
-
+	
 	@FindBy(xpath="//span[@class='left-menu-title'][contains(text(),'Admin')]")
 	public WebElement admin; 
 	

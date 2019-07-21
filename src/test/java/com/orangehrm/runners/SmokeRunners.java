@@ -6,14 +6,12 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(
-		features = "src/test/resources/features", 
-		glue = "com/orangehrm/steps", 
-		//dryRun = true, 
-		monochrome = true, 
-		tags = {"@smoke"},
-		plugin = {"pretty", "html:target/cucumber-default-reports", "json:target/cucumber.json"}
-		)
+@CucumberOptions(features = "src/test/resources/features",
+					glue = "com/orangehrm/steps",
+					dryRun = false,
+					monochrome = true,
+					tags = {"@jobtitle" }, 
+					plugin = { "pretty", "html:target/cucumber-default-reports", "json:target/cucumber.json" })
 public class SmokeRunners {
 
 }

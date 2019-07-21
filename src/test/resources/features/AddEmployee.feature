@@ -3,7 +3,7 @@
 Feature: Add Employee
 
   Background: 
-    Given I logged in into OrangeHrm
+    	Given I logged in into OrangeHrm
       And I click on PIM link
       And I click on Add employee link
   
@@ -25,7 +25,7 @@ Feature: Add Employee
       And I click on create login details
       And I provide all mandatory fields "<userName>", "<passWord>", "<confirmPassword>", "<adminRole>" 
       And I click on save button
-  #Then I see employee "<fName>", "<lName>" is displayed
+  		Then I see employee "<fName>", "<lName>" is displayed
   
     Examples: 
       | userName | passWord          | confirmPassword   | admin        |

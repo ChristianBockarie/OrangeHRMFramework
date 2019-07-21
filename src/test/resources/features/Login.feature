@@ -1,15 +1,15 @@
-#Author: avanchristian-trials65.orangehrmlive.com
+#Author: christian bockarie   or avanchristianbock.33sl@gmail.com
 @sprint3 @login
 Feature: Login
 
   Background: 
     Given I see OrangeHrm logo
 
-  @smoke 
+  @jenkins
   Scenario: Valid login
     When I enter valid username and password
     And I click login button
-    Then I succesfully logged in
+    Then I successfully logged in
 
   @regression
   Scenario: Invalid login
@@ -20,7 +20,7 @@ Feature: Login
   @regression
   Scenario: Error message Validation
     When I enter invalid username and password I see errorMessage
-      | UserName | Password | ErrorMessage        |
-      | Admin1   | Test     | Invalid Credentials |
-      | Admin2   | Test1    | Invalid Credentials |
-      | Admin3   | Test2    | Invalid Credentials |
+      | UserName | Password   | ErrorMessage        |
+      | Admin    | Admin123   | Invalid Credentials |
+      | Admin1   | Syntax123! | Invalid Credentials |
+      | Admin2   | Syntax123  | Invalid Credentials |

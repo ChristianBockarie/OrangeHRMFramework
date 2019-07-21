@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 
 import com.orangehrm.pages.JobTitlePage;
 import com.orangehrm.utils.CommonMethods;
+import com.orangehrm.utils.Constants;
 import com.orangehrm.utils.DbUtils;
 
 import cucumber.api.java.en.Given;
@@ -18,27 +19,43 @@ import cucumber.api.java.en.When;
 
 public class JobTitleSteps extends CommonMethods {
 
-	JobTitlePage jtPage;
+	JobTitlePage jtitle;
+
 	List<Map<String, String>> uiResults;
 	List<Map<String, String>> dbResults;
 
 	public JobTitleSteps() {
-		jtPage = new JobTitlePage();
+		jtitle = new JobTitlePage();
 	}
 
 	@Given("I click on Admin")
 	public void i_click_on_Admin() {
-		click(jtPage.admin);
+	  click(jtitle.admin);
 	}
 
-	@Given("I click on job link")
-	public void i_click_on_job_link() {
-		click(jtPage.jobLink);
+	@When("I click on job")
+	public void i_click_on_job() {
+		click(jtitle.job);
 	}
 
-	@Given("I click on jobtitle")
+	@When("I click on jobtitle")
 	public void i_click_on_jobtitle() {
-		click(jtPage.jobTitle);
+		click(jtitle.jobTitle);
+	}
+
+	@When("I click on addJobTitle")
+	public void i_click_on_addJobTitle() {
+		
+		click(jtitle.addJobTitle);
+		
+	}
+
+	@When("I enter job {string}, {string} and job {string}")
+	public void i_enter_job_and_job(String jobTitle, String jobDescription, String specification) {
+		
+		sendText(jtitle.jobTitleField, jobTitle);
+		sendText(jtitle.jobDescription, jobDescription);
+		sendText(jtitle.jobSpecification, Constants.FILEPATH + specification);
 	}
 
 	@When("I get all job titles from UI")
@@ -46,8 +63,8 @@ public class JobTitleSteps extends CommonMethods {
 
 		uiResults = new ArrayList<>();
 
-		for (WebElement row : jtPage.jtTableRow) {
-
+		for (WebElement row : jtitle.jobTitleTableRows) {
+			
 			Map<String, String> uiDataMap = new LinkedHashMap<>();
 
 			String rowText = row.getText().replace("ohrm_edit", "").trim();
@@ -56,7 +73,6 @@ public class JobTitleSteps extends CommonMethods {
 
 			uiResults.add(uiDataMap);
 		}
-
 	}
 
 	@When("I execute {string} from Database")
@@ -64,10 +80,9 @@ public class JobTitleSteps extends CommonMethods {
 		dbResults = DbUtils.getResultSetData(sqlQuery);
 	}
 
-	@Then("I see results from UI and Database are matched")
-	public void i_see_results_from_UI_and_Database_are_matched() {
-		//Assert.assertTrue(uiResults.equals(dbResults));;
+	@Then("Job titles are matched")
+	public void job_titles_are_matched() {
 
+		Assert.assertTrue(uiResults.equals(dbResults));
 	}
-
 }

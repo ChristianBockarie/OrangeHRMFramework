@@ -1,6 +1,6 @@
 package com.orangehrm.steps;
 
-import java.util.ArrayList;		
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Assert;
@@ -24,8 +24,9 @@ public class AddEmployeeSteps extends CommonMethods {
 	HomePage home = new HomePage();;
 	AddEmployeePage addEmp = new AddEmployeePage();
 	ExcelUtility xcel = new ExcelUtility();
-	//Scenario: Adding Employee
-	@Given("I logged in into to OrangeHrm")
+	// Scenario: Adding Employee
+
+	@Given("I logged in into OrangeHrm")
 	public void i_logged_in_into_to_OrangeHrm() {
 		login.login(ConfigsReader.getProperty("username"), ConfigsReader.getProperty("password"));
 
@@ -50,37 +51,39 @@ public class AddEmployeeSteps extends CommonMethods {
 		selectList(addEmp.locationList, location);
 
 	}
-	//Scenario: Add Employee and create login details
+
+	// Scenario: Add Employee and create login details
+
 	@When("I provide employee details from {string}")
-	public void i_provide_employee_details_from(String EmployeeDetails) throws Exception  {
+	public void i_provide_employee_details_from(String EmployeeDetails) throws Exception {
 		xcel.openExcel(Constants.XL_FILEPATH, "EmployeeDetails");
 		int rows = xcel.getRowNum();
 		int cols = xcel.getColNum(0);
-		
-		for (int i=1; i<rows; i++) {
-			for (int j=0; j<cols; j++) {
-				//String value = xcel.getCellData(i, j);
-				
+
+		for (int i = 1; i < rows; i++) {
+			for (int j = 0; j < cols; j++) {
+				// String value = xcel.getCellData(i, j);
+
 				String fName = xcel.getCellData(i, j);
 				String mName = xcel.getCellData(i, ++j);
 				String lName = xcel.getCellData(i, ++j);
 				String location = xcel.getCellData(i, ++j);
-				
+
 				sendText(addEmp.firstName, fName);
 				sendText(addEmp.middleName, mName);
 				sendText(addEmp.lastName, lName);
 				click(addEmp.location);
 				selectList(addEmp.locationList, location);
 			}
-			
 		}
-
 	}
+
 	@When("I click on create login details")
 	public void i_click_on_create_login_details() {
-		//waitForElementBeClickable(addEmp.createLoginDetailsBtn, 20);
+		// waitForElementBeClickable(addEmp.createLoginDetailsBtn, 20);
 		click(addEmp.createLoginDetailsBtn);
 	}
+
 	@When("I provide all mandatory fields {string}, {string}, {string}, {string}")
 	public void i_provide_all_mandatory_fields_and_and_and(String userName, String passWord, String confirmPassword,
 			String adminRole) {
@@ -104,17 +107,18 @@ public class AddEmployeeSteps extends CommonMethods {
 		takeScreenshot(empDetails);
 	}
 
-	//Scenario: Add Employee Labels Verification
+	// Scenario: Add Employee Labels Verification
 	@Then("I see following labels")
 	public void i_see_following_labels(DataTable addEmpLabels) {
+
 		List<String> expectedLabels = addEmpLabels.asList();
 		System.out.println("------Printing labels from cucumber dataTables------");
 		for (String label : expectedLabels) {
 			System.out.println(label);
 		}
 
-		List<String> actualLabels = new ArrayList<String>();
 		System.out.println("------Printing labels from application dataTables------");
+		List<String> actualLabels = new ArrayList<>();
 		List<WebElement> labelList = addEmp.addEmpLabels;
 		for (WebElement label : labelList) {
 			String labeltxt = label.getText();
@@ -122,8 +126,7 @@ public class AddEmployeeSteps extends CommonMethods {
 				System.out.println(labeltxt.replace("*", ""));
 			}
 		}
-		//boolean condition = actualLabels.equals(expectedLabels);
-		Assert.assertNotSame(expectedLabels, actualLabels);
+		Assert.assertTrue(expectedLabels.equals(actualLabels));
 	}
 
 }

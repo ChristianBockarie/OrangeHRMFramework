@@ -75,6 +75,7 @@
 				<configuration>
 					<includes>
 						<include>**/*SmokeRunner.java</include>
+						<inlcude>**/*RegressionRunner.java</inlcude>
 					</includes>
 					<testFailureIgnore>true</testFailureIgnore>
 				</configuration>
@@ -92,7 +93,7 @@
 							<goal>generate</goal>
 						</goals>
 						<configuration>
-							<projectName>Syntax_OrangeHrm</projectName>
+							<projectName>OrangeHRMFramework</projectName>
 
 							<!-- output directory for the generated report -->
 							<outputDirectory>${project.build.directory}</outputDirectory>
