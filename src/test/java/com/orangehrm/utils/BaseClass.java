@@ -1,6 +1,6 @@
 package com.orangehrm.utils;
 
-import java.util.concurrent.TimeUnit;	
+import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -16,7 +16,8 @@ public class BaseClass {
 	public static void setUp() {
 
 		ConfigsReader.readProperties(Constants.CREDENTIALS_FILEPATH);// "src/test/resources/configs/credentials.properties";
-		//ConfigsReader.readProperties(Constants.GOOGLE_FILEPATH);// "src/test/resources/configs/google.properties";
+		// ConfigsReader.readProperties(Constants.GOOGLE_FILEPATH);//
+		// "src/test/resources/configs/google.properties";
 		String browser = ConfigsReader.getProperty("browser");
 
 		if (browser.equalsIgnoreCase("chrome")) {

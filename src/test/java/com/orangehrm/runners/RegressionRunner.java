@@ -9,11 +9,11 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 		features = "src/test/resources/features", 
 		glue = "com/orangehrm/steps", 
-		dryRun = false, 
+		//dryRun = true, 
 		monochrome = true, 
-		tags = {"@sprint3"},
+		tags = {"@regression"},
 		plugin = {"pretty", "html:target/cucumber-default-reports", "json:target/cucumber.json"}
 		)
-public class TestRunner {
+public class RegressionRunner {
 
 }

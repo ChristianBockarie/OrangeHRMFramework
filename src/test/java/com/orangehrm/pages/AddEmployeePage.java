@@ -59,6 +59,9 @@ public class AddEmployeePage extends BaseClass {
 	@FindBy(xpath = "//form[@id='pimAddEmployeeForm']//label")
 	public List<WebElement> addEmpLabels;
 
+	@FindBy(xpath = "//a[@id='systemUserSaveBtn']/following-sibling::a")
+	public WebElement cancelBtn;
+	
 	public AddEmployeePage() {
 		PageFactory.initElements(driver, this);
 	}

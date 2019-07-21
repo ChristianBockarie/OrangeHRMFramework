@@ -5,7 +5,7 @@ Feature: Login
   Background: 
     Given I see OrangeHrm logo
 
-  @smoke @test
+  @smoke 
   Scenario: Valid login
     When I enter valid username and password
     And I click login button

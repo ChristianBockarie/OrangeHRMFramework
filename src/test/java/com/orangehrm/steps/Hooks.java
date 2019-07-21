@@ -2,6 +2,7 @@ package com.orangehrm.steps;
 
 import com.orangehrm.utils.BaseClass;
 import com.orangehrm.utils.CommonMethods;
+import com.orangehrm.utils.DbUtils;
 
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
@@ -11,18 +12,29 @@ public class Hooks {
 
 	@Before
 	public void start(Scenario scenario) {
-		System.out.println("Starting test:"+scenario.getName());
+		System.out.println("Starting test:" + scenario.getName());
 		BaseClass.setUp();
-	
+
 	}
-	
+
 	@After
 	public void end(Scenario scenario) {
-		System.out.println("Ending test:"+scenario.getName());
-		if(scenario.isFailed()) {
-			byte[] shot=CommonMethods.takeScreenshot();
+		System.out.println("Ending test:" + scenario.getName());
+		if (scenario.isFailed()) {
+			byte[] shot = CommonMethods.takeScreenshot();
 			scenario.embed(shot, "image/png");
 		}
 		BaseClass.tearDown();
 	}
+
+	@Before("@db")
+	public void open() {
+		DbUtils.createConnection();
+	}
+
+	@After("@db")
+	public void close() {
+		DbUtils.closeConnection();
+	}
+
 }

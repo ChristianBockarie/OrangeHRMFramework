@@ -14,8 +14,35 @@ public class HomePage extends BaseClass{
 	@FindBy(partialLinkText="PIM")
     public WebElement PIM;
 	
-    @FindBy(partialLinkText="Add Employee")
-    public WebElement addEmployee;
+	@FindBy(linkText = "Admin")
+	public WebElement admin;
+
+	@FindBy(linkText = "Training")
+	public WebElement training;
+
+	@FindBy(linkText = "Users")
+	public WebElement users;
+
+	@FindBy(linkText = "User Management")
+	public WebElement userMngm;
+
+	@FindBy(linkText = "Organization")
+	public WebElement organization;
+
+	@FindBy(linkText = "Locations")
+	public WebElement locations;
+
+	@FindBy(linkText = "Skills")
+	public WebElement skills;
+
+	@FindBy(linkText = "Courses")
+	public WebElement courses;
+
+	@FindBy(linkText = "Qualifications")
+	public WebElement qualifications;
+
+	@FindBy(partialLinkText = "Add Employee")
+	public WebElement addEmployee;
 	
 	public HomePage() {
 		PageFactory.initElements(driver, this);
